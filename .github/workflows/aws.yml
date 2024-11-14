@@ -16,8 +16,7 @@ jobs:
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
-          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
       - name: Copy files to EC2
         run: |
