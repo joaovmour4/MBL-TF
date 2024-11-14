@@ -21,11 +21,11 @@ jobs:
       - name: Copy files to EC2
         run: |
           echo "$ssh-private-key" > private_key && chmod 600 private_key
-          scp -r -o StrictHostKeyChecking=no private_key ec2-user@15.229.117.94:/home/ec2-user/app
+          scp -r -o StrictHostKeyChecking=no private_key ec2-user@ec2-15-228-247-16.sa-east-1.compute.amazonaws.com:/home/ec2-user/app
 
       - name: SSH into EC2 and deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@15.229.117.94 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ec2-user@ec2-user@ec2-15-228-247-16.sa-east-1.compute.amazonaws.com << 'EOF'
             cd /home/ec2-user/app
             docker-compose down
             docker-compose up --build -d
