@@ -50,21 +50,3 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
-
-      # - name: Set up SSH
-      #   uses: webfactory/ssh-agent@v0.5.3
-      #   with:
-      #     ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-
-      # - name: Copy files to EC2
-      #   run: |
-      #     echo "${{ secrets.EC2_SSH_KEY }}" > private_key && chmod 600 private_key
-      #     scp -i private_key -r -o StrictHostKeyChecking=no . ec2-user@ec2-15-228-247-16.sa-east-1.compute.amazonaws.com:/home/ec2-user/app
-
-      # - name: SSH into EC2 and deploy
-      #   run: |
-      #     ssh -i private_key -o StrictHostKeyChecking=no ec2-user@ec2-15-228-247-16.sa-east-1.compute.amazonaws.com << 'EOF'
-      #       cd /home/ec2-user/app
-      #       docker-compose down
-      #       docker-compose up --build -d
-      #     EOF

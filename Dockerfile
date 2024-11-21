@@ -18,7 +18,7 @@ ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
 # Exponha a porta que o Flask usa (ajuste conforme necessário)
-EXPOSE 5000
+EXPOSE 8000
 
 # Comando para executar a aplicação
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app"]
